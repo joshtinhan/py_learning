@@ -13,7 +13,6 @@ import math
 the_lowest_price = math.inf
 storeArr = ["S商店", "C商店", "P商店", "M商店"]
 the_lowest_store = str()
-storeDict = {"S商店": int(), "C商店":  int(), "P商店": int(), "M商店": int()}
 for i in storeArr:
     inputArr = input("Please input the details:").split()
     if inputArr != ["0"]:
