@@ -11,7 +11,10 @@
 
 import math
 the_lowest_price = math.inf
-for i in range(4):
+storeArr = ["S商店", "C商店", "P商店", "M商店"]
+the_lowest_store = str()
+storeDict = {"S商店": int(), "C商店":  int(), "P商店": int(), "M商店": int()}
+for i in storeArr:
     inputArr = input("Please input the details:").split()
     if inputArr != ["0"]:
         [quantity, price] = inputArr[:2]
@@ -39,6 +42,9 @@ for i in range(4):
                             discountedPrice, price * discountRate)
             elif v[-1] == "%":
                 bonus = 1-float(v[:-1])/100
+
+            if (discountedPrice + shipping_fee)*bonus < the_lowest_price:
+                the_lowest_store = i
             the_lowest_price = min(
                 round((discountedPrice + shipping_fee)*bonus), the_lowest_price)
-print(the_lowest_price)
+print(f"{the_lowest_store} {the_lowest_price}")
