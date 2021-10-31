@@ -17,4 +17,4 @@ print(questions_answer_by_student)
 for index in scoreDict:
     print(f"{index} {int(scoreDict[index])}")
 for val in correctRate:
-    print(f"{round(float(val/toll*100))}% ", end='')
+    print(f"{round(float(val/toll*100),1)}% ", end='')
