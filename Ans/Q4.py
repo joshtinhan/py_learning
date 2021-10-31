@@ -14,7 +14,7 @@ the_lowest_price = math.inf
 storeArr = ["S商店", "C商店", "P商店", "M商店"]
 the_lowest_store = str()
 for i in storeArr:
-    inputArr = input("Please input the details:").split()
+    inputArr = input().split()
     if inputArr != ["0"]:
         [quantity, price] = inputArr[:2]
         price = int(price)
