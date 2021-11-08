@@ -14,5 +14,3 @@ for j in range(len(guess_arr)):
             b += 1
             repeat_num.append(guess_arr[j])
 print(f"{a}A{b}B")
-1234567
-7654321
