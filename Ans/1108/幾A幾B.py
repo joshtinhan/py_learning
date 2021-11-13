@@ -1,6 +1,3 @@
-from functools import partial
-
-
 correct_ans_arr = [str(v) for v in input()]
 guess_arr = [str(v) for v in input()]
 dict_correct_ans_arr = dict()
