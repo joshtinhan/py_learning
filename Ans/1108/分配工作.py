@@ -57,6 +57,5 @@ def del_existed(dict):
 
 for i in range(man_job_quantity):
     final_cost += del_existed(man_jobcost_matrix)
-print(final_ans)
 print(",".join(final_ans.values()))
 print(final_cost)
