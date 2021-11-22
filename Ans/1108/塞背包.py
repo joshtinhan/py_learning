@@ -1,45 +1,35 @@
-arr = []
-quantity_limit = [int(v) for v in input().split()]
-for i in range(quantity_limit[0]):
-    arr.append([int(v) for v in input().split()])
+def perm(a, k=0):
+    global maxv, maxe
+    weight = 0
+    val = 0
+    if k == len(a):
+        # print(a, end="")
+        for m in range(len(a)):
+            pv = a[m]
+            mw = int(w[pv-1])
+            mv = int(v[pv-1])
+
+            weight = weight+mw
+            if weight > 10:
+                break
+            val = val+int(v[pv-1])
+            if val > maxv:
+                maxv = val
+                maxe = a[0:m+1]
+            print(' ', weight, val, maxv)
+        weight = 0
+        val = 0
+    else:
+        for i in range(k, len(a)):
+            a[k], a[i] = a[i], a[k]
+            perm(a, k+1)
+            a[k], a[i] = a[i], a[k]
 
 
-def get_sum_list(list, index):
-    sum = 0
-    for i in range(len(list)):
-        sum += list[i][index]
-    return sum
-
-
-def recu(comb, curr_index, limit, input_arr):
-    while curr_index < len(input_arr):
-        curr_weight = 0
-        if len(comb) > 1:
-            curr_weight = get_sum_list(comb, 1)
-            if input_arr[curr_index][0] + curr_weight <= limit:
-                comb.append(input_arr[curr_index])
-            else:
-                max_value = 0
-                origin_value = get_sum_list(comb, 0)
-                for i in range(len(comb)):
-                    b = comb.pop(i)
-                    max_value = max(origin_value, get_sum_list(
-                        comb, 1)+arr[curr_index][1])
-                    if get_sum_list(
-                            comb, 1)+arr[curr_index][1] == max_value and get_sum_list(comb, 0)+arr[curr_index][0] <= limit:
-                        comb.append(arr[curr_index])
-                    else:
-                        comb.insert(i, b)
-                curr_index += 1
-                recu(comb, curr_index, limit, input_arr)
-        else:
-            if input_arr[curr_index][0] <= limit:
-                curr_weight = input_arr[curr_index][0]
-                comb.append(input_arr[curr_index])
-
-        curr_index += 1
-        recu(comb, curr_index, limit, input_arr)
-    return comb
-
-
-print(get_sum_list(recu([], 0, quantity_limit[1], arr), 1))
+maxe = []
+maxv = 0
+n = 5
+c = 10
+w = [2, 2, 6, 5, 4]
+v = [6, 3, 5, 4, 6]
+perm([1, 2, 3, 4, 5])
