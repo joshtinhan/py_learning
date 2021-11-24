@@ -1,3 +1,6 @@
+import sys
+
+
 class Store:
     all = []
 
@@ -8,14 +11,10 @@ class Store:
         Store.all.append(self)
 
     def buy(self, name, quantity=0):
-        pass
         if name in self.history:
             self.history[name] += int(quantity)
         else:
             self.history[name] = int(quantity)
-
-    def __repr__(self) -> str:
-        return f"Store({self.item},{self.price},{self.history})"
 
 
 n, m = [v for v in input().split()]
@@ -23,13 +22,11 @@ for i in range(int(n)):
     item, price = [v for v in input().split()]
     history = {}
     Store(item, price, history)
-# for i in range(int(m)):
 for i in range(int(m)):
     name, item, quantity = [v for v in input().split()]
     for j in Store.all:
         if j.item == item:
             j.buy(name, quantity)
-# print(Store.all)
 while True:
     try:
         exec_func = input().split()
@@ -45,13 +42,13 @@ while True:
                     if exec_func[1] in i.history:
                         print(i.history[exec_func[1]])
                     else:
-                        print(0)
+                        print("0")
         if exec_func[0] == "C":
             for i in Store.all:
                 if i.item == exec_func[1]:
                     if i.history != {}:
                         print(",".join(sorted(i.history.keys())))
                     else:
-                        print(0)
-    except ValueError:
-        continue
+                        print("0")
+    except:
+        sys.exit(1)
