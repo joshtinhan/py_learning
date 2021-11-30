@@ -1,6 +1,3 @@
-def test():
-    return 1, 1
-
-
-x, y = test()
-print(x, y)
+arr = [1, 2, 1, 3, 4]
+arr = list(map((lambda x: x+1), arr))
+print(arr)
